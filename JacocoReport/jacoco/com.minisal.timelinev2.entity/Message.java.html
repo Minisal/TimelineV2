@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Message.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">timelinev2</a> &gt; <a href="index.source.html" class="el_package">com.minisal.timelinev2.entity</a> &gt; <span class="el_source">Message.java</span></div><h1>Message.java</h1><pre class="source lang-java linenums">package com.minisal.timelinev2.entity;
+
+import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+@Entity
+public class Message {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = &quot;id&quot;)
+    private Long id;
+
+    @Column(name = &quot;title&quot;,nullable = false)
+    private String title;
+
+    @Column(name = &quot;content&quot;, length = 2000)
+    private String content;
+
+    @Column(name = &quot;user&quot;, length = 2000)
+    private String user;
+
+    @Column(name = &quot;addTime&quot;)
+    private Calendar addTime;
+
+<span class="fc" id="L28">    public Message() { }</span>
+
+<span class="fc" id="L30">    public Message(String title, String content, String user) {</span>
+<span class="fc" id="L31">        this.title = title;</span>
+<span class="fc" id="L32">        this.content = content;</span>
+<span class="fc" id="L33">        this.user = user;</span>
+<span class="fc" id="L34">        this.addTime = Calendar.getInstance();</span>
+<span class="fc" id="L35">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L38">        return id;</span>
+    }
+
+    public String getTitle() {
+<span class="fc" id="L42">        return title;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="fc" id="L46">        this.title = title;</span>
+<span class="fc" id="L47">    }</span>
+
+    public String getContent() {
+<span class="fc" id="L50">        return content;</span>
+    }
+
+    public void setContent(String content) {
+<span class="fc" id="L54">        this.content = content;</span>
+<span class="fc" id="L55">    }</span>
+
+    public String getUser() {
+<span class="fc" id="L58">        return user;</span>
+    }
+
+    public void setUser(String user) {
+<span class="fc" id="L62">        this.user = user;</span>
+<span class="fc" id="L63">    }</span>
+
+    public String getAddTime(){
+<span class="fc" id="L66">        SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+<span class="fc" id="L67">        return format.format(this.addTime.getTime());</span>
+    }
+
+    public String setAddTime(String addTime) throws ParseException {
+<span class="fc" id="L71">        SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+<span class="fc" id="L72">            Date date =format.parse(addTime);</span>
+<span class="fc" id="L73">            this.addTime.setTime(date);</span>
+<span class="fc" id="L74">            return addTime;</span>
+
+    }
+
+<span class="fc" id="L78">    public static class MessageBuilder{</span>
+        private String title;
+        private String content;
+        private String user;
+
+        public Message.MessageBuilder title(String title){
+<span class="fc" id="L84">            this.title = title;</span>
+<span class="fc" id="L85">            return this;</span>
+        }
+
+        public Message.MessageBuilder content(String content){
+<span class="fc" id="L89">            this.content = content;</span>
+<span class="fc" id="L90">            return this;</span>
+        }
+
+        public Message.MessageBuilder user(String user){
+<span class="fc" id="L94">            this.user = user;</span>
+<span class="fc" id="L95">            return this;</span>
+        }
+
+        public Message build(){
+<span class="fc" id="L99">            return new Message(title,content,user);</span>
+        }
+
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L106">        SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+<span class="fc" id="L107">        String addTimeStr = format.format(this.addTime.getTime());</span>
+<span class="fc" id="L108">        return &quot;message{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, title='&quot; + title + '\'' +
+                &quot;, user=&quot; + user +
+                &quot;, content='&quot; + content + '\'' +
+                &quot;, addTime='&quot; + addTimeStr + '\'' +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

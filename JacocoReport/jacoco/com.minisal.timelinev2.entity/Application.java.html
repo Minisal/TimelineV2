@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Application.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">timelinev2</a> &gt; <a href="index.source.html" class="el_package">com.minisal.timelinev2.entity</a> &gt; <span class="el_source">Application.java</span></div><h1>Application.java</h1><pre class="source lang-java linenums">package com.minisal.timelinev2.entity;
+
+import javax.persistence.*;
+
+@Entity
+public class Application {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;application_id&quot;)
+    private Long id;
+
+    @Column(name = &quot;app_name&quot;,nullable = false)
+    private String name;
+
+    @Column(length = 2000)
+    private String description;
+
+    private String owner;
+
+<span class="fc" id="L21">    public Application() {</span>
+
+<span class="fc" id="L23">    }</span>
+
+<span class="fc" id="L25">    public Application(String name, String description, String owner) {</span>
+<span class="fc" id="L26">        this.name = name;</span>
+<span class="fc" id="L27">        this.description = description;</span>
+<span class="fc" id="L28">        this.owner = owner;</span>
+<span class="fc" id="L29">    }</span>
+
+    public String getName() {
+<span class="fc" id="L32">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L36">        this.name = name;</span>
+<span class="fc" id="L37">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L40">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L44">        this.description = description;</span>
+<span class="fc" id="L45">    }</span>
+
+    public String getOwner() {
+<span class="fc" id="L48">        return owner;</span>
+    }
+
+    public void setOwner(String owner) {
+<span class="fc" id="L52">        this.owner = owner;</span>
+<span class="fc" id="L53">    }</span>
+
+<span class="fc" id="L55">    public static class ApplicationBuilder{</span>
+        private String name;
+        private String description;
+        private String owner;
+
+        public ApplicationBuilder name(String name){
+<span class="fc" id="L61">            this.name = name;</span>
+<span class="fc" id="L62">            return this;</span>
+        }
+
+        public ApplicationBuilder description(String description){
+<span class="fc" id="L66">            this.description = description;</span>
+<span class="fc" id="L67">            return this;</span>
+        }
+
+        public ApplicationBuilder owner(String owner){
+<span class="fc" id="L71">            this.owner = owner;</span>
+<span class="fc" id="L72">            return this;</span>
+        }
+
+        public Application build(){
+<span class="fc" id="L76">            return new Application(name,description,owner);</span>
+        }
+
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L83">        return &quot;Application{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, name='&quot; + name + '\'' +
+                &quot;, owner=&quot; + owner +
+                &quot;, description='&quot; + description + '\'' +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

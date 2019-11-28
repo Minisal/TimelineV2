@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+timelinev2,com.minisal.timelinev2.controller,MessageController,0,38,0,0,0,11,0,8,0,8
+timelinev2,com.minisal.timelinev2.entity,Message,0,116,0,0,0,26,0,12,0,12
+timelinev2,com.minisal.timelinev2.entity,Application.ApplicationBuilder,0,28,0,0,0,8,0,5,0,5
+timelinev2,com.minisal.timelinev2.entity,Application,0,67,0,0,0,17,0,9,0,9
+timelinev2,com.minisal.timelinev2.entity,Message.MessageBuilder,0,28,0,0,0,8,0,5,0,5
+timelinev2,com.minisal.timelinev2,Timelinev2Application,5,7,0,0,2,2,1,2,1,2
+timelinev2,com.minisal.timelinev2.service,ApplicationServiceImpl,0,25,0,2,0,6,0,4,0,3
+timelinev2,com.minisal.timelinev2.service,MessageServiceImpl,0,45,0,0,0,11,0,6,0,6
+timelinev2,com.minisal.timelinev2.exception,ApplicationNotFoundException,0,15,0,0,0,6,0,2,0,2
+timelinev2,com.minisal.timelinev2.exception,MessageNotFoundException,15,0,0,0,6,0,2,0,2,0

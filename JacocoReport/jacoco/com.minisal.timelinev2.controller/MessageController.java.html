@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MessageController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">timelinev2</a> &gt; <a href="index.source.html" class="el_package">com.minisal.timelinev2.controller</a> &gt; <span class="el_source">MessageController.java</span></div><h1>MessageController.java</h1><pre class="source lang-java linenums">package com.minisal.timelinev2.controller;
+
+import com.minisal.timelinev2.entity.Message;
+import com.minisal.timelinev2.exception.MessageNotFoundException;
+import com.minisal.timelinev2.service.ApplicationService;
+import com.minisal.timelinev2.service.MessageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+<span class="fc" id="L16">public class MessageController {</span>
+    private ApplicationService applicationService;
+    private MessageService messageService;
+
+    @Autowired
+    public void setApplicationService(ApplicationService applicationService) {
+<span class="fc" id="L22">        this.applicationService = applicationService;</span>
+<span class="fc" id="L23">    }</span>
+
+    @Autowired
+    public void setMessageService(MessageService messageService){
+<span class="fc" id="L27">        this.messageService = messageService;</span>
+<span class="fc" id="L28">    }</span>
+
+
+    @GetMapping(&quot;/applications&quot;)
+    public String retrieveApplications(Model model){
+<span class="fc" id="L33">        model.addAttribute(&quot;applications&quot;, applicationService.listApplications());</span>
+<span class="fc" id="L34">        return &quot;applications&quot;;</span>
+    }
+
+    @GetMapping(&quot;/messages&quot;)
+    public List&lt;Message&gt; retrieveMessages(Model model){
+<span class="fc" id="L39">        return this.messageService.listMessages();</span>
+    }
+
+    @GetMapping(&quot;/getNow&quot;)
+    public List&lt;Message&gt; retrieveNowMessages(Model model) throws MessageNotFoundException {
+<span class="fc" id="L44">        return this.messageService.getNow();</span>
+    }
+    @GetMapping(&quot;/getNew&quot;)
+    public List&lt;Message&gt; retrieveNewTickets(@RequestParam long id) throws MessageNotFoundException {
+<span class="fc" id="L48">        return this.messageService.getNew(id);</span>
+    }
+    @GetMapping(&quot;/getOld&quot;)
+    public List&lt;Message&gt; retrieveOldTickets(@RequestParam long id) throws MessageNotFoundException{
+<span class="fc" id="L52">        return this.messageService.getOld(id);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
